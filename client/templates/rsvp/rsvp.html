@@ -1,0 +1,25 @@
+<template name="Rsvp">
+	
+	{{#if isSuccessfulRsvp }}
+		
+		<h2>Thanks for the RSVP {{> lastRsvp}}!</h2>
+
+		
+		{{else}}
+
+		  {{> quickForm 
+			collection="Rsvps"
+			id="insertRsvpForm"
+			type="method"
+			meteormethod="submitRsvp"
+			omitFields="createdAt"
+		  }}
+		  
+	{{/if}}
+</template>
+
+<template name="lastRsvp">
+	{{#each rsvps }}
+	 	{{ guests }}, {{ email }}
+	{{/each}}		
+</template>
